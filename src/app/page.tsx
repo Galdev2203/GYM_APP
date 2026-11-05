@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Activity, ArrowUpRight, BarChart3, CalendarDays, Check, ChevronDown, CircleHelp, Dumbbell, Flame, LayoutDashboard, LogOut, Plus, Search, Settings2, Sparkles, Target, TrendingUp, Trophy, X } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
+import type { User } from "@supabase/supabase-js";
 
 type Exercise={id:string;name:string;muscle_group:string;equipment:string|null};
 type SetRow={reps:number;weight:number};
@@ -11,7 +12,7 @@ const starter:Exercise[]=[
 ];
 const week=[{d:"L",v:45},{d:"M",v:70},{d:"X",v:0},{d:"J",v:88},{d:"V",v:60},{d:"S",v:100},{d:"D",v:0}];
 export default function Home(){
- const supabase=useMemo(()=>createClient(),[]);const [user,setUser]=useState<any>(null);const [tab,setTab]=useState("Resumen");const [exercises,setExercises]=useState(starter);const [workouts,setWorkouts]=useState<Workout[]>([]);const [modal,setModal]=useState(false);const [exercise,setExercise]=useState<Exercise|null>(null);const [sets,setSets]=useState<SetRow[]>([{reps:10,weight:20},{reps:10,weight:20},{reps:8,weight:22.5}]);const [search,setSearch]=useState("");const [notice,setNotice]=useState("");
+ const supabase=useMemo(()=>createClient(),[]);const [user,setUser]=useState<User|null>(null);const [tab,setTab]=useState("Resumen");const [exercises,setExercises]=useState(starter);const [workouts,setWorkouts]=useState<Workout[]>([]);const [modal,setModal]=useState(false);const [exercise,setExercise]=useState<Exercise|null>(null);const [sets,setSets]=useState<SetRow[]>([{reps:10,weight:20},{reps:10,weight:20},{reps:8,weight:22.5}]);const [search,setSearch]=useState("");const [notice,setNotice]=useState("");
  useEffect(()=>{if(!supabase)return;supabase.auth.getUser().then(({data})=>setUser(data.user));const {data:{subscription}}=supabase.auth.onAuthStateChange((_e,s)=>setUser(s?.user??null));return()=>subscription.unsubscribe()},[supabase]);
  useEffect(()=>{if(!supabase||!user)return;let live=true;(async()=>{const [e,w]=await Promise.all([supabase.from("exercises").select("id,name,muscle_group,equipment").order("name"),supabase.from("workouts").select("id,performed_at,name,duration_minutes,workout_sets(id,reps,weight_kg)").order("performed_at",{ascending:false}).limit(20)]);if(!live)return;if(e.data)setExercises(e.data as Exercise[]);if(w.data)setWorkouts(w.data as Workout[])})();return()=>{live=false}},[supabase,user]);
  const volume=workouts.reduce((a,w)=>a+(w.workout_sets??[]).reduce((b,s)=>b+s.reps*s.weight_kg,0),0);
