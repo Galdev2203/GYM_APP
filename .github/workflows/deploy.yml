@@ -29,8 +29,8 @@ jobs:
       - name: Build static site
         run: npm run build
         env:
-          NEXT_PUBLIC_SUPABASE_URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
-          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          NEXT_PUBLIC_SUPABASE_URL: https://xflqdoelsrqsyarblrbb.supabase.co
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: sb_publishable_ZMA--iWTj40PQP_H_bOkIQ_vBDQYq91
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
