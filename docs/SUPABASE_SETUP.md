@@ -44,3 +44,17 @@ Abre http://localhost:3000/GYM_APP/. Para comprobar la versión estática ejecut
 - `workout_sets`: series asociadas a sesión y ejercicio; RLS valida la propiedad de la sesión.
 
 El mismo Supabase Auth y PostgREST podrá ser consumido por las futuras aplicaciones Android/iOS.
+
+
+## 7. Actualización de funcionalidades: rutinas y planificación
+Si ya ejecutaste una versión anterior de `supabase/schema.sql`, vuelve a ejecutar el archivo actualizado completo en SQL Editor. Está preparado para añadir las tablas nuevas sin borrar los entrenamientos existentes.
+
+Nuevas tablas:
+- `training_templates`: rutinas personales con nombre y favorito.
+- `training_template_exercises`: ejercicios incluidos en cada rutina y su orden.
+- `training_schedule`: planificación semanal habitual de cada usuario.
+- `workouts` y `workout_sets`: sesiones realizadas y sus series reales.
+
+La biblioteca `exercises` es compartida: cualquier usuario autenticado puede consultar los ejercicios activos. Las rutinas, planificación y registros de entrenamiento son privados por usuario mediante RLS.
+
+La planificación semanal es una plantilla habitual. En esta primera iteración se puede iniciar la rutina asignada al día; si se cambia el día de entrenamiento, se puede iniciar otra rutina manualmente sin alterar la planificación habitual. La selección de otro día concreto en un calendario de semana queda como mejora posterior.
