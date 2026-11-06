@@ -23,6 +23,17 @@ drop policy if exists "own workout sets only" on public.workout_sets;create poli
 drop policy if exists "own templates" on public.training_templates;create policy "own templates" on public.training_templates for all to authenticated using(auth.uid()=user_id) with check(auth.uid()=user_id);
 drop policy if exists "own template exercises" on public.training_template_exercises;create policy "own template exercises" on public.training_template_exercises for all to authenticated using(exists(select 1 from public.training_templates t where t.id=template_id and t.user_id=auth.uid())) with check(exists(select 1 from public.training_templates t where t.id=template_id and t.user_id=auth.uid()));
 drop policy if exists "own weekly schedule" on public.training_schedule;create policy "own weekly schedule" on public.training_schedule for all to authenticated using(auth.uid()=user_id) with check(auth.uid()=user_id);
+
+-- API privileges: RLS still restricts rows to each authenticated user.
+grant usage on schema public to authenticated;
+grant select on public.exercises to authenticated;
+grant select, insert, update, delete on public.profiles to authenticated;
+grant select, insert, update, delete on public.workouts to authenticated;
+grant select, insert, update, delete on public.workout_sets to authenticated;
+grant select, insert, update, delete on public.training_templates to authenticated;
+grant select, insert, update, delete on public.training_template_exercises to authenticated;
+grant select, insert, update, delete on public.training_schedule to authenticated;
+
 create or replace function public.handle_new_user() returns trigger language plpgsql security definer set search_path='' as $$ begin insert into public.profiles(id,display_name,avatar_url) values(new.id,coalesce(new.raw_user_meta_data->>'full_name',new.raw_user_meta_data->>'name'),new.raw_user_meta_data->>'avatar_url') on conflict(id) do nothing;return new;end;$$;
 drop trigger if exists on_auth_user_created on auth.users;create trigger on_auth_user_created after insert on auth.users for each row execute procedure public.handle_new_user();
 insert into public.exercises(name,muscle_group,equipment,instructions) values
