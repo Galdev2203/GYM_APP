@@ -218,3 +218,23 @@ button:disabled{opacity:.55;cursor:not-allowed}
 .dashboard-insights strong small{font-size:10px;color:#9aa499;font-weight:500}
 @media(max-width:850px){.dashboard-overview{grid-template-columns:1fr}.dashboard-day-detail{min-height:0}}
 @media(max-width:600px){.dashboard-calendar-title{display:grid;gap:12px}.calendar-month-nav{justify-content:space-between}.dashboard-calendar-day{height:42px}.dashboard-calendar-legend{gap:9px 12px}.dashboard-calendar-legend span{font-size:8px}.dashboard-insights{grid-template-columns:1fr 1fr}.dashboard-insights article:last-child{grid-column:1/-1}}
+
+
+/* Muscle-group filters for exercise library and routine builder */
+.muscle-filter-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:-4px 0 18px}
+.muscle-filter-row>label{font-size:10px;color:#9aa499;font-weight:800;letter-spacing:.3px}
+.muscle-filter-row select,.picker-filters select{min-width:190px;max-width:100%;height:38px;padding:0 34px 0 11px;border:1px solid #39443a;background:#141a15;color:#e4e9df;font:inherit;font-size:11px;outline:none}
+.muscle-filter-row select:focus,.picker-filters select:focus{border-color:#b8f36b}
+.filter-clear{border:0;background:transparent;color:#b8f36b;font:inherit;font-size:10px;cursor:pointer;padding:8px}
+.picker-filters{display:grid;grid-template-columns:minmax(0,1fr) minmax(170px,.65fr);gap:9px;margin:10px 0}
+.picker-filters .search{min-width:0;width:100%}
+.picker-filters .search input{min-width:0;width:100%}
+.picker-results-count{font-size:9px;color:#9aa499;margin:0 0 8px}
+.routine-picker{overscroll-behavior:contain}
+@media(max-width:600px){
+ .muscle-filter-row{display:grid;grid-template-columns:1fr;align-items:stretch;gap:6px;margin:0 0 14px}
+ .muscle-filter-row select{width:100%;min-width:0}
+ .muscle-filter-row .filter-clear{justify-self:start;padding:5px 0}
+ .picker-filters{grid-template-columns:1fr;gap:8px}
+ .picker-filters select{width:100%;min-width:0}
+}
