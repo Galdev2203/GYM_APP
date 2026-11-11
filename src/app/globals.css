@@ -116,3 +116,11 @@ button:disabled{opacity:.55;cursor:not-allowed}
 .session-meta-fields>label{display:grid;gap:7px;color:#a2aaa0;font-size:10px;font-weight:750;letter-spacing:.5px}
 .session-meta-fields .name-input{width:100%;margin:0}
 @media(max-width:600px){.session-meta-fields{grid-template-columns:1fr}}
+
+
+/* Explicit calendar trigger for desktop date entry */
+.date-input-wrap{position:relative;display:flex;align-items:center}
+.date-input-wrap .name-input{padding-right:46px;color-scheme:dark;cursor:pointer}
+.date-picker-trigger{position:absolute;right:1px;top:1px;bottom:1px;width:42px;display:grid;place-items:center;border:0;border-left:1px solid #39443a;background:#263326;color:#b8f36b;cursor:pointer}
+.date-picker-trigger:hover{background:#344532;color:#c9ff82}
+.date-picker-trigger:focus-visible{outline:2px solid #b8f36b;outline-offset:2px}
