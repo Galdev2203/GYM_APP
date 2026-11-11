@@ -246,11 +246,15 @@ button:disabled{opacity:.55;cursor:not-allowed}
 .muscle-filter-trigger:hover,.muscle-filter-trigger.open{border-color:#789d53;background:#1b241d}
 .muscle-filter-trigger svg{color:#b8f36b;flex:none;transition:transform .15s}
 .muscle-filter-trigger.open svg{transform:rotate(180deg)}
-.muscle-filter-menu{position:absolute;top:calc(100% + 5px);left:0;right:0;z-index:100;max-height:260px;overflow-y:auto;padding:5px;border:1px solid #39443a;background:#171e19;box-shadow:0 14px 32px #0009}
+.muscle-filter-menu{position:absolute;top:calc(100% + 5px);left:0;right:0;z-index:100;max-height:min(340px,calc(100vh - 150px));overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#53634b #171e19;padding:5px;border:1px solid #39443a;background:#171e19;box-shadow:0 14px 32px #0009}
+.muscle-filter-menu::-webkit-scrollbar{width:6px}
+.muscle-filter-menu::-webkit-scrollbar-track{background:#171e19}
+.muscle-filter-menu::-webkit-scrollbar-thumb{background:#53634b;border-radius:8px;border:1px solid #171e19}
+.muscle-filter-menu::-webkit-scrollbar-thumb:hover{background:#789d53}
 .muscle-filter-option{width:100%;min-height:34px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 9px;border:0;background:transparent;color:#cbd4c8;font:inherit;font-size:10px;text-align:left;cursor:pointer}
 .muscle-filter-option:hover{background:#263326;color:#f1f3ed}
 .muscle-filter-option.selected{background:#263326;color:#b8f36b;font-weight:800}
 .muscle-filter-option svg{color:#b8f36b}
 .muscle-filter-row .muscle-filter{min-width:190px}
 .picker-filters .muscle-filter{min-width:0;width:100%}
-@media(max-width:600px){.muscle-filter-row .muscle-filter{width:100%;min-width:0}.picker-filters .muscle-filter{width:100%}.muscle-filter-menu{max-height:220px}}
+@media(max-width:600px){.muscle-filter-row .muscle-filter{width:100%;min-width:0}.picker-filters .muscle-filter{width:100%}.muscle-filter-menu{max-height:min(280px,calc(100vh - 130px))}}
