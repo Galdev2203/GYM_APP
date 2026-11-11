@@ -124,3 +124,32 @@ button:disabled{opacity:.55;cursor:not-allowed}
 .date-picker-trigger{position:absolute;right:1px;top:1px;bottom:1px;width:42px;display:grid;place-items:center;border:0;border-left:1px solid #39443a;background:#263326;color:#b8f36b;cursor:pointer}
 .date-picker-trigger:hover{background:#344532;color:#c9ff82}
 .date-picker-trigger:focus-visible{outline:2px solid #b8f36b;outline-offset:2px}
+
+
+/* Custom workout calendar */
+.workout-date-picker{position:relative;width:100%;font-weight:400;letter-spacing:normal}
+.workout-date-trigger{width:100%;min-height:48px;display:flex;align-items:center;gap:12px;text-align:left;padding:8px 12px;border:1px solid #39443a;background:#101411;color:#f1f3ed;cursor:pointer}
+.workout-date-trigger:hover{border-color:#789d53}
+.workout-date-icon{width:32px;height:32px;display:grid;place-items:center;background:#263326;color:#b8f36b;flex:none}
+.workout-date-trigger>span:nth-child(2){display:grid;gap:4px;flex:1;min-width:0}
+.workout-date-trigger small{font-size:8px;letter-spacing:1px;color:#9aa499;font-weight:800}
+.workout-date-trigger b{font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.date-chevron{color:#9aa499;transition:transform .18s ease}.date-chevron.open{transform:rotate(90deg);color:#b8f36b}
+.workout-calendar{position:absolute;z-index:80;top:calc(100% + 8px);left:0;width:min(320px,calc(100vw - 48px));padding:14px;background:#171e19;border:1px solid #465341;box-shadow:0 18px 48px #0009;color:#f1f3ed}
+.workout-calendar-head{display:grid;grid-template-columns:34px 1fr 34px;align-items:center;gap:8px;margin-bottom:13px}
+.workout-calendar-head strong{text-align:center;text-transform:capitalize;font-size:12px}
+.workout-calendar-head button{height:32px;display:grid;place-items:center;border:1px solid #39443a;background:#202a21;color:#b8f36b;cursor:pointer}
+.workout-calendar-head button:disabled{opacity:.3;cursor:not-allowed}
+.workout-calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.workout-calendar-weekdays{margin-bottom:5px}
+.workout-calendar-weekdays span{height:27px;display:grid;place-items:center;color:#9aa499;font-size:9px;font-weight:800}
+.workout-calendar-day{height:34px;border:1px solid transparent;background:transparent;color:#e1e8dc;font:inherit;font-size:10px;cursor:pointer}
+.workout-calendar-day:hover:not(:disabled){border-color:#789d53;background:#263326}
+.workout-calendar-day.selected{background:#b8f36b;border-color:#b8f36b;color:#101411;font-weight:850}
+.workout-calendar-day.today:not(.selected){border-color:#789d53;color:#b8f36b;font-weight:800}
+.workout-calendar-day.outside{visibility:hidden}
+.workout-calendar-day:disabled{color:#657064;cursor:not-allowed}
+.workout-calendar-footer{display:flex;justify-content:space-between;gap:10px;margin-top:12px;padding-top:10px;border-top:1px solid #303a31}
+.workout-calendar-footer button{border:0;background:transparent;color:#b8f36b;font:inherit;font-size:10px;font-weight:800;padding:6px 8px;cursor:pointer}
+.workout-calendar-footer button:hover{background:#263326}
+@media(max-width:600px){.workout-calendar{width:min(320px,calc(100vw - 40px))}}
