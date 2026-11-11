@@ -153,3 +153,17 @@ button:disabled{opacity:.55;cursor:not-allowed}
 .workout-calendar-footer button{border:0;background:transparent;color:#b8f36b;font:inherit;font-size:10px;font-weight:800;padding:6px 8px;cursor:pointer}
 .workout-calendar-footer button:hover{background:#263326}
 @media(max-width:600px){.workout-calendar{width:min(320px,calc(100vw - 40px))}}
+
+
+/* Keep workout name and date controls perfectly aligned */
+.session-meta-fields{align-items:end}
+.session-meta-fields>label{min-width:0;align-content:start}
+.session-meta-fields>label>.name-input{height:48px;min-height:48px;box-sizing:border-box}
+.workout-date-picker{min-width:0}
+.workout-date-trigger{height:48px;min-height:48px;box-sizing:border-box}
+@media(max-width:600px){
+ .session-meta-fields{grid-template-columns:minmax(0,1fr);gap:14px}
+ .session-meta-fields>label{width:100%}
+ .session-meta-fields>label>.name-input,.session-meta-fields .workout-date-trigger{width:100%;height:48px;min-height:48px}
+ .workout-calendar{left:0;right:auto;width:min(320px,100%);max-width:calc(100vw - 40px)}
+}
