@@ -1,6 +1,6 @@
 "use client";
 import {useCallback,useEffect,useMemo,useState} from "react";
-import {Activity,ArrowLeft,ArrowUpRight,BarChart3,CalendarDays,Check,ChevronRight,Dumbbell,Heart,LayoutDashboard,LogOut,Play,Plus,Search,Settings2,Star,Trash2,X} from "lucide-react";
+import {Activity,ArrowLeft,ArrowUpRight,BarChart3,CalendarDays,Check,ChevronLeft,ChevronRight,Dumbbell,Heart,LayoutDashboard,LogOut,Play,Plus,Search,Settings2,Star,Trash2,X} from "lucide-react";
 import {createClient} from "@/lib/supabase/client";
 import type {User} from "@supabase/supabase-js";
 
